@@ -1,46 +1,37 @@
-README
-Wichtel-Generator
-Dieses Programm generiert Wichtel-Paare für eine Gruppe von vier Personen. Jeder Teilnehmer bekommt per WhatsApp die Person zugelost, für die er oder sie ein Geschenk kaufen soll.
+# Wichtel-Bot
 
-Wie funktioniert das Programm?
-Das Programm besteht aus zwei Dateien: wichtel_logic.py und main.py.
+Dieser Bot zieht für dich eine Liste von Wichtel-Geschenken. Er verwendet die Python-Bibliotheken `random`, `time`, `twilio` und `dotenv`.
+Das Programm ist ein Wichtel-Zufallsgenerator, der eine Gruppe von Personen zufällig zu Paaren zusammenführt, wobei jede Person eine andere Person in der Gruppe als Wichtel zieht. Das Programm nutzt die Python-Bibliotheken "random" und "time" für die Zufallsgenerierung und einen Timer, "twilio" für die Versendung von WhatsApp-Nachrichten und "dotenv" für das Einlesen von Konfigurationsdaten aus einer .env-Datei.
 
-In wichtel_logic.py wird eine Liste von Telefonnummern und Namen angelegt. Die Funktion get_wichtel_tuple_list() generiert dann zufällige Paare von Telefonnummern und Namen, die der final_nr_tuple_list hinzugefügt werden. set_wichtel_tuple_list() ordnet dann jeder Telefonnummer den entsprechenden Namen zu.
+Das Programm liest WhatsApp-Nummern und Namen aus einer Liste und verwendet diese, um zufällige Paare zu generieren, die dann über WhatsApp benachrichtigt werden. Wenn das Programm ausgeführt wird, generiert es eine Liste von Tupeln, die jedes Paar von Personen darstellen, die einander als Wichtel zugelost wurden. Die Tupel werden dann verwendet, um Nachrichten an die entsprechenden Telefonnummern über den Twilio-Dienst zu senden.
 
-In main.py wird schließlich das Hauptprogramm ausgeführt. Es ruft die Funktionen aus wichtel_logic.py auf und verschickt die Wichtel-Paare per WhatsApp. Dazu benötigt man die Twilio-API.
+## Einrichtung
 
-Wie wird das Programm ausgeführt?
-Um das Programm auszuführen, müssen Sie main.py ausführen. Achten Sie darauf, dass Sie alle notwendigen Module installiert haben. Sie können das Programm auch manuell anpassen, um mehr oder weniger Teilnehmer einzubeziehen.
+1. Erstelle einen [Twilio-Account](https://www.twilio.com/) und generiere eine WhatsApp-Nummer, um Nachrichten zu senden.
+2. Installiere die erforderlichen Bibliotheken, indem du den Befehl `pip install -r requirements.txt` in der Befehlszeile ausführst.
+3. Erstelle eine `.env`-Datei im selben Verzeichnis wie `wichtel.py` und füge die folgenden Informationen hinzu:
 
-Folgender Codeausschnitt zeigt, wie das Programm ausgeführt wird:
+ACCOUNT_SID=your_account_sid_here
+AUTH_TOKEN=your_auth_token_here
+TWILIO_SANDBOX_TESTING_NUMBER=your_twilio_sandbox_testing_number_here
 
-python
-Copy code
-import wichtel_logic
+4. Füge die WhatsApp-Nummern und Namen der Personen, die am Wichteln teilnehmen, in die Listen `nr_list` und `name_list` in der Datei `wichtel.py` ein.
+
+## Verwendung
+
+Führe `python wichtel.py` in der Befehlszeile aus und der Bot wird automatisch Wichtelgeschenke ziehen und eine WhatsApp-Nachricht mit den entsprechenden Zuweisungen senden.
+
+## Anmerkungen
+
+- Wenn das Timeout von 5 Minuten erreicht ist, wird die Zuordnung zurückgesetzt und der Bot beginnt erneut.
+- Die Zuweisungen werden auf der Konsole ausgegeben und in der Liste `final_nr_tuple_list` gespeichert, die aus WhatsApp-Nummer und Namen besteht.
+- Der Bot kann mit anderen Nachrichten-APIs als Twilio erweitert werden, solange die API Python-Unterstützung bietet.
 
 
-def main():
-    wichtel_logic.set_wichtel_tuple_list(wichtel_logic.get_wichtel_tuple_list())
-    wichtel_logic.send_wichtel_msg()
+## Contributing
 
+Pull-Requests sind willkommen. Für größere Änderungen erstellen Sie bitte zuerst ein Issue, um zu diskutieren, was Sie ändern möchten.
 
-if __name__ == "__main__":
-    main()
-Ausgabe
-Die Ausgabe des Programms erfolgt über die Konsole. Die Ausgabe zeigt die gezogenen Paare von Telefonnummern und Namen an, sowie die verschickten WhatsApp-Nachrichten. Folgender Codeausschnitt zeigt die Ausgabe:
+## Lizenz
 
-python
-Copy code
-Sending message to: WHATSAPPNUMBER
-Message sent to: WHATSAPPNUMBER
-
-Sending message to: WHATSAPPNUMBER
-Message sent to: WHATSAPPNUMBER
-
-Sending message to: WHATSAPPNUMBER
-Message sent to: WHATSAPPNUMBER
-
-Sending message to: WHATSAPPNUMBER
-Message sent to: WHATSAPPNUMBER
-Autor
-Dieses Programm wurde von [Name des Autors] entwickelt.
+[MIT](https://choosealicense.com/licenses/mit/)
