@@ -1,5 +1,8 @@
 # Wichtel-Bot
 
+## 1. Option Wichtel-Bot mit Whatsapp
+## 2. Option Wichtel-Bot mit SMTP
+
 Dieser Bot zieht für dich eine Liste von Wichtel-Geschenken. Er verwendet die Python-Bibliotheken `random`, `time`, `twilio` und `dotenv`.
 Das Programm ist ein Wichtel-Zufallsgenerator, der eine Gruppe von Personen zufällig zu Paaren zusammenführt, wobei jede Person eine andere Person in der Gruppe als Wichtel zieht. Das Programm nutzt die Python-Bibliotheken "random" und "time" für die Zufallsgenerierung und einen Timer, "twilio" für die Versendung von WhatsApp-Nachrichten und "dotenv" für das Einlesen von Konfigurationsdaten aus einer .env-Datei.
 
@@ -26,6 +29,11 @@ Führe `python wichtel.py` in der Befehlszeile aus und der Bot wird automatisch 
 - Wenn das Timeout von 5 Minuten erreicht ist, wird die Zuordnung zurückgesetzt und der Bot beginnt erneut.
 - Die Zuweisungen werden auf der Konsole ausgegeben und in der Liste `final_nr_tuple_list` gespeichert, die aus WhatsApp-Nummer und Namen besteht.
 - Der Bot kann mit anderen Nachrichten-APIs als Twilio erweitert werden, solange die API Python-Unterstützung bietet.
+
+
+## Option Wichtel-Bot mit SMTP
+
+
 
 
 ## Contributing
