@@ -1,7 +1,6 @@
 # Wichtel-Bot
 
 ## 1. Option Wichtel-Bot mit Whatsapp
-## 2. Option Wichtel-Bot mit SMTP
 
 Dieser Bot zieht für dich eine Liste von Wichtel-Geschenken. Er verwendet die Python-Bibliotheken `random`, `time`, `twilio` und `dotenv`.
 Das Programm ist ein Wichtel-Zufallsgenerator, der eine Gruppe von Personen zufällig zu Paaren zusammenführt, wobei jede Person eine andere Person in der Gruppe als Wichtel zieht. Das Programm nutzt die Python-Bibliotheken "random" und "time" für die Zufallsgenerierung und einen Timer, "twilio" für die Versendung von WhatsApp-Nachrichten und "dotenv" für das Einlesen von Konfigurationsdaten aus einer .env-Datei.
@@ -31,9 +30,35 @@ Führe `python wichtel.py` in der Befehlszeile aus und der Bot wird automatisch 
 - Der Bot kann mit anderen Nachrichten-APIs als Twilio erweitert werden, solange die API Python-Unterstützung bietet.
 
 
-## Option Wichtel-Bot mit SMTP
+## 2. Option Wichtel-Bot mit SMTP
 
 
+Dieses Python-Programm führt ein Wichtelziehen durch und sendet jedem Teilnehmer per E-Mail eine Nachricht mit dem Namen der Person, die er oder sie bewichteln soll.
+
+## Voraussetzungen
+
+Das Programm erfordert die folgenden Module, die installiert werden müssen:
+
+- os
+- smtplib
+- email.message
+- imghdr
+- random
+
+Zusätzlich müssen Sie über eine gültige Gmail-E-Mail-Adresse und ein entsprechendes Passwort verfügen, um die E-Mails zu senden. Sie müssen diese Informationen als Umgebungsvariablen mit den Namen `EMAIL_USER` und `EMAIL_PASS` in Ihrem Betriebssystem hinterlegen.
+
+## Funktionsweise
+
+Das Programm verwendet zwei Dictionaries `wichtelNames` und `wichtelEmails`, um die Namen und E-Mail-Adressen der Teilnehmer zu speichern. Beim Start des Programms wird eine Schleife ausgeführt, die zufällig Namen und E-Mail-Adressen auswählt und sicherstellt, dass jede Person jemanden anderen bewichtelt. Wenn ein Paar ausgewählt wird, wird eine E-Mail-Nachricht mit dem Namen des Bewichtelten und dem Namen des Schenkenden an die E-Mail-Adresse des Bewichtelten gesendet.
+
+Das Programm verwendet auch eine Bilddatei `christmas.gif`, die an jede E-Mail-Nachricht angehängt wird.
+
+## Verwendung
+
+1. Stellen Sie sicher, dass alle erforderlichen Module installiert sind.
+2. Legen Sie die Umgebungsvariablen `EMAIL_USER` und `EMAIL_PASS` fest.
+3. Fügen Sie die Namen und E-Mail-Adressen der Teilnehmer in die Dictionaries `wichtelNames` und `wichtelEmails` ein.
+4. Starten Sie das Programm, indem Sie die Python-Datei ausführen.
 
 
 ## Contributing
